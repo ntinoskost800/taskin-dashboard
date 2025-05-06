@@ -220,7 +220,7 @@ export const calendarEvents: IEvent[] = [
     end: new Date(2024, 7, 16, 14, 45),
   },
 ]
-const RBToolbar = (event: ToolbarProps) => {
+const RBToolbar = (event: ToolbarProps<IEvent>) => {
   return (
     <div className="flex items-center justify-between py-3">
       <p className="text-body-1 font-medium text-metal-900 dark:text-white">{event.label}</p>
