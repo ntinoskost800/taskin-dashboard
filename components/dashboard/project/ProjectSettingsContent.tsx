@@ -38,7 +38,7 @@ const ProjectSettingsContent = () => {
   const tabs = [
     { id: 1, title: 'Project details' },
     { id: 2, title: 'Team & permissions' },
-    { id: 3, title: 'Others' },
+    // { id: 3, title: 'Others' },
   ]
 
   return (
@@ -197,7 +197,7 @@ const ProjectSettingsContent = () => {
             </div>
           </div>
         </div>
-        <div
+        {/* <div
           data-active={activeTab === 3}
           className="h-full flex-col justify-between data-[active=true]:flex data-[active=false]:hidden">
           <div className="space-y-8">
@@ -252,7 +252,7 @@ const ProjectSettingsContent = () => {
               Delete this project
             </Button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

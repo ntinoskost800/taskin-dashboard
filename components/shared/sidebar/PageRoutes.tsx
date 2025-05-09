@@ -9,7 +9,7 @@ const PageRoutes = () => {
   const routes = [
     { id: 1, name: 'Home', icon: <IHouseLine size={20} />, path: '/' },
     { id: 2, name: 'My Tasks', icon: <ICheckCircle size={20} />, path: '/tasks' },
-    { id: 3, name: 'Notification', icon: <IBell size={20} />, path: '/notification' },
+    // { id: 3, name: 'Notification', icon: <IBell size={20} />, path: '/notification' },
   ]
 
   const isActive = (path: string) => {
@@ -32,7 +32,7 @@ const PageRoutes = () => {
           <span>{route.name}</span>
         </Link>
       ))}
-      <Search />
+      {/* <Search /> */}
     </ul>
   )
 }

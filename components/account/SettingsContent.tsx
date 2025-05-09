@@ -11,13 +11,13 @@ import Profile from './Profile'
 const SettingsContent = () => {
   const [activeTab, setActiveTab] = useState(1)
   const settingsTab = [
-    { id: 1, title: 'General' },
+    // { id: 1, title: 'General' },
     { id: 2, title: 'Profile' },
-    { id: 3, title: 'Notifications' },
+    // { id: 3, title: 'Notifications' },
     { id: 4, title: 'Company' },
-    { id: 5, title: 'Display' },
+    // { id: 5, title: 'Display' },
     { id: 6, title: 'Apps' },
-    { id: 7, title: 'Hacks' },
+    // { id: 7, title: 'Hacks' },
   ]
 
   return (
@@ -36,13 +36,13 @@ const SettingsContent = () => {
         </div>
       </div>
       <div id="scroll-bar" className="col-span-9 h-full overflow-auto">
-        <General activeTab={activeTab} />
+        {/* <General activeTab={activeTab} /> */}
         <Profile activeTab={activeTab} />
-        <Notifications activeTab={activeTab} />
+        {/* <Notifications activeTab={activeTab} /> */}
         <Company activeTab={activeTab} />
-        <Display activeTab={activeTab} />
+        {/* <Display activeTab={activeTab} /> */}
         <Apps activeTab={activeTab} />
-        <Hacks activeTab={activeTab} />
+        {/* <Hacks activeTab={activeTab} /> */}
       </div>
     </div>
   )

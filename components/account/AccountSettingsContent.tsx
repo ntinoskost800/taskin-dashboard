@@ -11,13 +11,13 @@ const AccountSettingsContent = ({ activeTab }: { activeTab: number }) => {
   return (
     <div className="grid grid-cols-12 items-start divide-y divide-metal-100">
       <div id="scroll-bar" className="col-span-12 h-[calc(100vh-120px)] overflow-auto">
-        <General activeTab={activeTab} />
+        {/* <General activeTab={activeTab} /> */}
         <Profile activeTab={activeTab} />
-        <Notifications activeTab={activeTab} />
+        {/* <Notifications activeTab={activeTab} /> */}
         <Company activeTab={activeTab} />
-        <Display activeTab={activeTab} />
+        {/* <Display activeTab={activeTab} /> */}
         <Apps activeTab={activeTab} />
-        <Hacks activeTab={activeTab} />
+        {/* <Hacks activeTab={activeTab} /> */}
       </div>
     </div>
   )

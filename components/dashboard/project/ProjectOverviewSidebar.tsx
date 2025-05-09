@@ -33,7 +33,7 @@ const ProjectOverviewSidebar = () => {
           </li>
         </ul>
       </div>
-      <GroupMessage />
+      {/* <GroupMessage /> */}
     </div>
   )
 }

@@ -17,13 +17,13 @@ import AccountSettingsContent from './AccountSettingsContent'
 const AccountSettings = () => {
   const [activeTab, setActiveTab] = useState(1)
   const settingsTab = [
-    { id: 1, title: 'General' },
+    // { id: 1, title: 'General' },
     { id: 2, title: 'Profile' },
-    { id: 3, title: 'Notifications' },
+    // { id: 3, title: 'Notifications' },
     { id: 4, title: 'Company' },
-    { id: 5, title: 'Display' },
+    // { id: 5, title: 'Display' },
     { id: 6, title: 'Apps' },
-    { id: 7, title: 'Hacks' },
+    // { id: 7, title: 'Hacks' },
   ]
   return (
     <Drawer showCloseIcon={false}>

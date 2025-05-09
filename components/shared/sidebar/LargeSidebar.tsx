@@ -17,18 +17,18 @@ const LargeSidebar = () => {
         <PageRoutes />
         <Divider className="border-t-metal-900/5 dark:border-t-metal-700" />
         <ProjectRoutes />
-        <Divider className="border-t-metal-900/5 dark:border-t-metal-700" />
-        <UserRoutes />
+        {/* <Divider className="border-t-metal-900/5 dark:border-t-metal-700" />
+        <UserRoutes /> */}
         <Divider className="border-t-metal-900/5 dark:border-t-metal-700" />
         <ul className="flex flex-col gap-y-1.5">
-          <Link
+          {/* <Link
             href="/"
             className="flex h-9 items-center gap-3 rounded-full px-3 py-2 text-body-4 font-medium text-metal-600 transition-all duration-300 hover:bg-white data-[active=true]:bg-white dark:text-metal-300 dark:hover:bg-[#D9E9FF12] dark:data-[active=true]:bg-[#D9E9FF12]">
             <span>
               <ISparkle size={20} />
             </span>
             <span>Upgrade</span>
-          </Link>
+          </Link> */}
           <Link
             href="/"
             className="flex h-9 items-center gap-3 rounded-full px-3 py-2 text-body-4 font-medium text-metal-600 transition-all duration-300 hover:bg-white data-[active=true]:bg-white dark:text-metal-300 dark:hover:bg-[#D9E9FF12] dark:data-[active=true]:bg-[#D9E9FF12]">

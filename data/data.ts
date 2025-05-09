@@ -272,24 +272,24 @@ export const projectTabs: TaskTabs[] = [
     Icon: ListDashes,
     href: 'lists',
   },
-  {
-    id: 4,
-    title: 'Calender',
-    Icon: CalendarBlank,
-    href: 'calender',
-  },
-  {
-    id: 5,
-    title: 'Message',
-    Icon: ChatCenteredText,
-    href: 'message',
-  },
-  {
-    id: 6,
-    title: 'Files',
-    Icon: File,
-    href: 'files',
-  },
+  // {
+  //   id: 4,
+  //   title: 'Calender',
+  //   Icon: CalendarBlank,
+  //   href: 'calender',
+  // },
+  // {
+  //   id: 5,
+  //   title: 'Message',
+  //   Icon: ChatCenteredText,
+  //   href: 'message',
+  // },
+  // {
+  //   id: 6,
+  //   title: 'Files',
+  //   Icon: File,
+  //   href: 'files',
+  // },
 ]
 export const taskTabs: TaskTabs[] = [
   {
