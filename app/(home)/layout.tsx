@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ReactNode } from 'react'
 import '../globals.css'
+import { AuthProvider } from '../context/AuthContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,13 +22,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-metal-100 dark:bg-[#31373F]`} suppressHydrationWarning>
-        <KeepThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <main>
-            <LargeSidebar />
-            <section className="xl:m-4 xl:ml-[250px]">{children}</section>
-          </main>
-          <ToastWrapper />
-        </KeepThemeProvider>
+        <AuthProvider>
+          <KeepThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+            <main>
+              <LargeSidebar />
+              <section className="xl:m-4 xl:ml-[250px]">{children}</section>
+            </main>
+            <ToastWrapper />
+          </KeepThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   )

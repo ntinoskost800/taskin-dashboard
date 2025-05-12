@@ -1,3 +1,4 @@
+import ProtectedRoute from '@/components/auth/PortectedRoute'
 import { ICaretDown, IMagnifyingGlass } from '@/components/Icons/Icons'
 import PageHeader from '@/components/shared/PageHeader'
 import {
@@ -120,199 +121,205 @@ const projects = [
 ]
 const page = () => {
   return (
-    <div className="mx-auto h-[calc(100vh-32px)] overflow-hidden rounded-2xl bg-metal-25 dark:bg-metal-900">
-      <PageHeader>
-        <p className="text-body-3 font-medium text-metal-900 lg:text-body-1 dark:text-white">Project</p>
-      </PageHeader>
-      <div className="flex items-center justify-between border-b border-b-metal-100 px-6 py-3 dark:border-b-metal-800">
-        <fieldset className="relative hidden flex-1 md:block">
-          <Input placeholder="Search project" className="ps-11" />
-          <InputIcon>
-            <IMagnifyingGlass size={20} color="#AFBACA" />
-          </InputIcon>
-        </fieldset>
-        <div className="flex items-center justify-center md:hidden">
-          <button>
-            <IMagnifyingGlass size={16} className="text-metal-600 dark:text-metal-300" />
-          </button>
-        </div>
-        <div className="flex flex-1 items-center justify-end gap-x-1">
-          <Dropdown>
-            <DropdownAction asChild>
-              <Button variant="link" color="secondary" className="gap-1 dark:text-metal-300 dark:hover:text-white">
-                Owner
-                <ICaretDown className="size-4 text-metal-600 dark:text-metal-300" />
-              </Button>
-            </DropdownAction>
-            <DropdownContent
-              align="end"
-              className="w-[250px] rounded-2xl border border-metal-50 p-2 dark:border-metal-800/50 dark:bg-metal-900">
-              <form>
-                <fieldset className="relative">
-                  <Input
-                    placeholder="Search by name"
-                    className="h-10 rounded-none border-0 border-b border-b-metal-100 px-3 py-2.5 ps-11 focus:outline-none focus-visible:ring-0"
-                  />
-                  <InputIcon>
-                    <IMagnifyingGlass className="size-4 text-metal-600 dark:text-metal-300" />
-                  </InputIcon>
-                </fieldset>
-              </form>
-              <DropdownGroup className="pt-2">
-                <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
-                  <Avatar className="size-6">
-                    <AvatarImage className="size-6" src="/images/avatar/avatar-1.png" />
-                  </Avatar>
-                  <p>Zakir Hossen</p>
-                </DropdownItem>
-                <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
-                  <Avatar className="size-6">
-                    <AvatarImage className="size-6" src="/images/avatar/avatar-2.png" />
-                  </Avatar>
-                  <p>Jak Downey</p>
-                </DropdownItem>
-                <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
-                  <Avatar className="size-6">
-                    <AvatarImage className="size-6" src="/images/avatar/avatar-3.png" />
-                  </Avatar>
-                  <p>Kristin Watson</p>
-                </DropdownItem>
-                <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
-                  <Avatar className="size-6">
-                    <AvatarImage className="size-6" src="/images/avatar/avatar-4.png" />
-                  </Avatar>
-                  <p>Ronald Richards</p>
-                </DropdownItem>
-                <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
-                  <Avatar className="size-6">
-                    <AvatarImage className="size-6" src="/images/avatar/avatar-5.png" />
-                  </Avatar>
-                  <p>Ralph Edwards</p>
-                </DropdownItem>
-              </DropdownGroup>
-            </DropdownContent>
-          </Dropdown>
-          <Dropdown>
-            <DropdownAction asChild>
-              <Button variant="link" color="secondary" className="gap-1 dark:text-metal-300 dark:hover:text-white">
-                Member
-                <ICaretDown className="size-4 text-metal-600 dark:text-metal-300" />
-              </Button>
-            </DropdownAction>
-            <DropdownContent
-              align="end"
-              className="w-[250px] rounded-2xl border border-metal-50 p-2 dark:border-metal-800/50 dark:bg-metal-900">
-              <form>
-                <fieldset className="relative">
-                  <Input
-                    placeholder="Search by name"
-                    className="h-10 rounded-none border-0 border-b border-b-metal-100 px-3 py-2.5 ps-11 focus:outline-none focus-visible:ring-0"
-                  />
-                  <InputIcon>
-                    <IMagnifyingGlass className="size-4 text-metal-600 dark:text-metal-300" />
-                  </InputIcon>
-                </fieldset>
-              </form>
-              <DropdownGroup className="pt-2">
-                <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
-                  <Avatar className="size-6">
-                    <AvatarImage className="size-6" src="/images/avatar/avatar-1.png" />
-                  </Avatar>
-                  <p>Zakir Hossen</p>
-                </DropdownItem>
-                <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
-                  <Avatar className="size-6">
-                    <AvatarImage className="size-6" src="/images/avatar/avatar-2.png" />
-                  </Avatar>
-                  <p>Jak Downey</p>
-                </DropdownItem>
-                <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
-                  <Avatar className="size-6">
-                    <AvatarImage className="size-6" src="/images/avatar/avatar-3.png" />
-                  </Avatar>
-                  <p>Kristin Watson</p>
-                </DropdownItem>
-                <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
-                  <Avatar className="size-6">
-                    <AvatarImage className="size-6" src="/images/avatar/avatar-4.png" />
-                  </Avatar>
-                  <p>Ronald Richards</p>
-                </DropdownItem>
-                <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
-                  <Avatar className="size-6">
-                    <AvatarImage className="size-6" src="/images/avatar/avatar-5.png" />
-                  </Avatar>
-                  <p>Ralph Edwards</p>
-                </DropdownItem>
-              </DropdownGroup>
-            </DropdownContent>
-          </Dropdown>
-          <Dropdown>
-            <DropdownAction asChild>
-              <Button variant="link" color="secondary" className="gap-1 dark:text-metal-300 dark:hover:text-white">
-                Status
-                <ICaretDown className="size-4 text-metal-600 dark:text-metal-300" />
-              </Button>
-            </DropdownAction>
-            <DropdownContent
-              align="end"
-              className="w-[157px] border border-metal-100 p-2 shadow-2xLarge dark:border-metal-800">
-              <DropdownGroup>
-                <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">Active</DropdownItem>
-                <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">Completed</DropdownItem>
-                <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">Archived</DropdownItem>
-              </DropdownGroup>
-            </DropdownContent>
-          </Dropdown>
-        </div>
-      </div>
-      <div
-        id="scroll-bar"
-        className="grid h-[calc(100vh-150px)] grid-cols-12 gap-4 divide-metal-100 overflow-auto px-6 py-4 lg:h-auto lg:gap-0 lg:divide-y dark:divide-metal-800">
-        {projects.map((item) => (
-          <div
-            key={item.id}
-            className="col-span-12 flex flex-col items-start justify-between gap-x-5 gap-y-2 rounded-lg border border-metal-100 px-6 py-5 sm:col-span-6 lg:col-span-12 lg:flex-row lg:items-center lg:gap-y-0 lg:rounded-none lg:border-0 lg:px-0 dark:border-metal-800">
-            <div className="flex w-full max-w-[523px] items-center gap-2.5">
-              <Image src={item.img} height={24} width={24} alt="figma" />
-              <Link
-                href={`/projects/${item.id}/overview`}
-                className="text-body-3 font-medium text-metal-600 dark:text-white">
-                {item.title}
-              </Link>
-            </div>
-            <div className="flex w-full max-w-[105px] items-center gap-1.5">
-              <p className="text-body-5 font-normal text-metal-400 dark:text-metal-600">Status</p>
-              <p className="text-body-5 font-medium text-metal-600 dark:text-metal-300">{item.status}</p>
-            </div>
-            <div className="flex w-full max-w-[180px] items-center gap-1.5">
-              <p className="text-body-5 font-normal text-metal-400 dark:text-metal-600">Date line</p>
-              <p className="text-body-5 font-medium text-metal-600 dark:text-metal-300">{item.dateLine}</p>
-            </div>
-            <div className="w-full lg:max-w-[194px]">
-              <LineProgress progress={item.progress}>
-                <LineProgressBar className="bg-gradient-1" lineBackground="bg-white border border-[#CFA1FB] h-3" />
-                <LineProgressText className="text-body-5 font-medium text-metal-600 dark:text-metal-300">
-                  {item.progress}%
-                </LineProgressText>
-              </LineProgress>
-            </div>
-            <div>
-              <AvatarGroup className="-space-x-2">
-                {members.map((member) => (
-                  <Avatar key={member.id} className="size-6">
-                    <AvatarImage className="size-6" src={member.img} />
-                  </Avatar>
-                ))}
-                <div className="bg-gradient-10 relative z-10 flex size-6 items-center justify-center rounded-full text-body-5 font-medium text-white">
-                  9
-                </div>
-              </AvatarGroup>
-            </div>
+    <ProtectedRoute>
+      {/* ProtectedRoute to redirect to login page if unauthorized */}
+
+      <div className="mx-auto h-[calc(100vh-32px)] overflow-hidden rounded-2xl bg-metal-25 dark:bg-metal-900">
+        <PageHeader>
+          <p className="text-body-3 font-medium text-metal-900 lg:text-body-1 dark:text-white">Project</p>
+        </PageHeader>
+        <div className="flex items-center justify-between border-b border-b-metal-100 px-6 py-3 dark:border-b-metal-800">
+          <fieldset className="relative hidden flex-1 md:block">
+            <Input placeholder="Search project" className="ps-11" />
+            <InputIcon>
+              <IMagnifyingGlass size={20} color="#AFBACA" />
+            </InputIcon>
+          </fieldset>
+          <div className="flex items-center justify-center md:hidden">
+            <button>
+              <IMagnifyingGlass size={16} className="text-metal-600 dark:text-metal-300" />
+            </button>
           </div>
-        ))}
+          <div className="flex flex-1 items-center justify-end gap-x-1">
+            <Dropdown>
+              <DropdownAction asChild>
+                <Button variant="link" color="secondary" className="gap-1 dark:text-metal-300 dark:hover:text-white">
+                  Owner
+                  <ICaretDown className="size-4 text-metal-600 dark:text-metal-300" />
+                </Button>
+              </DropdownAction>
+              <DropdownContent
+                align="end"
+                className="w-[250px] rounded-2xl border border-metal-50 p-2 dark:border-metal-800/50 dark:bg-metal-900">
+                <form>
+                  <fieldset className="relative">
+                    <Input
+                      placeholder="Search by name"
+                      className="h-10 rounded-none border-0 border-b border-b-metal-100 px-3 py-2.5 ps-11 focus:outline-none focus-visible:ring-0"
+                    />
+                    <InputIcon>
+                      <IMagnifyingGlass className="size-4 text-metal-600 dark:text-metal-300" />
+                    </InputIcon>
+                  </fieldset>
+                </form>
+                <DropdownGroup className="pt-2">
+                  <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
+                    <Avatar className="size-6">
+                      <AvatarImage className="size-6" src="/images/avatar/avatar-1.png" />
+                    </Avatar>
+                    <p>Zakir Hossen</p>
+                  </DropdownItem>
+                  <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
+                    <Avatar className="size-6">
+                      <AvatarImage className="size-6" src="/images/avatar/avatar-2.png" />
+                    </Avatar>
+                    <p>Jak Downey</p>
+                  </DropdownItem>
+                  <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
+                    <Avatar className="size-6">
+                      <AvatarImage className="size-6" src="/images/avatar/avatar-3.png" />
+                    </Avatar>
+                    <p>Kristin Watson</p>
+                  </DropdownItem>
+                  <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
+                    <Avatar className="size-6">
+                      <AvatarImage className="size-6" src="/images/avatar/avatar-4.png" />
+                    </Avatar>
+                    <p>Ronald Richards</p>
+                  </DropdownItem>
+                  <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
+                    <Avatar className="size-6">
+                      <AvatarImage className="size-6" src="/images/avatar/avatar-5.png" />
+                    </Avatar>
+                    <p>Ralph Edwards</p>
+                  </DropdownItem>
+                </DropdownGroup>
+              </DropdownContent>
+            </Dropdown>
+            <Dropdown>
+              <DropdownAction asChild>
+                <Button variant="link" color="secondary" className="gap-1 dark:text-metal-300 dark:hover:text-white">
+                  Member
+                  <ICaretDown className="size-4 text-metal-600 dark:text-metal-300" />
+                </Button>
+              </DropdownAction>
+              <DropdownContent
+                align="end"
+                className="w-[250px] rounded-2xl border border-metal-50 p-2 dark:border-metal-800/50 dark:bg-metal-900">
+                <form>
+                  <fieldset className="relative">
+                    <Input
+                      placeholder="Search by name"
+                      className="h-10 rounded-none border-0 border-b border-b-metal-100 px-3 py-2.5 ps-11 focus:outline-none focus-visible:ring-0"
+                    />
+                    <InputIcon>
+                      <IMagnifyingGlass className="size-4 text-metal-600 dark:text-metal-300" />
+                    </InputIcon>
+                  </fieldset>
+                </form>
+                <DropdownGroup className="pt-2">
+                  <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
+                    <Avatar className="size-6">
+                      <AvatarImage className="size-6" src="/images/avatar/avatar-1.png" />
+                    </Avatar>
+                    <p>Zakir Hossen</p>
+                  </DropdownItem>
+                  <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
+                    <Avatar className="size-6">
+                      <AvatarImage className="size-6" src="/images/avatar/avatar-2.png" />
+                    </Avatar>
+                    <p>Jak Downey</p>
+                  </DropdownItem>
+                  <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
+                    <Avatar className="size-6">
+                      <AvatarImage className="size-6" src="/images/avatar/avatar-3.png" />
+                    </Avatar>
+                    <p>Kristin Watson</p>
+                  </DropdownItem>
+                  <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
+                    <Avatar className="size-6">
+                      <AvatarImage className="size-6" src="/images/avatar/avatar-4.png" />
+                    </Avatar>
+                    <p>Ronald Richards</p>
+                  </DropdownItem>
+                  <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
+                    <Avatar className="size-6">
+                      <AvatarImage className="size-6" src="/images/avatar/avatar-5.png" />
+                    </Avatar>
+                    <p>Ralph Edwards</p>
+                  </DropdownItem>
+                </DropdownGroup>
+              </DropdownContent>
+            </Dropdown>
+            <Dropdown>
+              <DropdownAction asChild>
+                <Button variant="link" color="secondary" className="gap-1 dark:text-metal-300 dark:hover:text-white">
+                  Status
+                  <ICaretDown className="size-4 text-metal-600 dark:text-metal-300" />
+                </Button>
+              </DropdownAction>
+              <DropdownContent
+                align="end"
+                className="w-[157px] border border-metal-100 p-2 shadow-2xLarge dark:border-metal-800">
+                <DropdownGroup>
+                  <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">Active</DropdownItem>
+                  <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">
+                    Completed
+                  </DropdownItem>
+                  <DropdownItem className="mb-0 rounded-xl px-3 py-2 dark:hover:bg-metal-800/30">Archived</DropdownItem>
+                </DropdownGroup>
+              </DropdownContent>
+            </Dropdown>
+          </div>
+        </div>
+        <div
+          id="scroll-bar"
+          className="grid h-[calc(100vh-150px)] grid-cols-12 gap-4 divide-metal-100 overflow-auto px-6 py-4 lg:h-auto lg:gap-0 lg:divide-y dark:divide-metal-800">
+          {projects.map((item) => (
+            <div
+              key={item.id}
+              className="col-span-12 flex flex-col items-start justify-between gap-x-5 gap-y-2 rounded-lg border border-metal-100 px-6 py-5 sm:col-span-6 lg:col-span-12 lg:flex-row lg:items-center lg:gap-y-0 lg:rounded-none lg:border-0 lg:px-0 dark:border-metal-800">
+              <div className="flex w-full max-w-[523px] items-center gap-2.5">
+                <Image src={item.img} height={24} width={24} alt="figma" />
+                <Link
+                  href={`/projects/${item.id}/overview`}
+                  className="text-body-3 font-medium text-metal-600 dark:text-white">
+                  {item.title}
+                </Link>
+              </div>
+              <div className="flex w-full max-w-[105px] items-center gap-1.5">
+                <p className="text-body-5 font-normal text-metal-400 dark:text-metal-600">Status</p>
+                <p className="text-body-5 font-medium text-metal-600 dark:text-metal-300">{item.status}</p>
+              </div>
+              <div className="flex w-full max-w-[180px] items-center gap-1.5">
+                <p className="text-body-5 font-normal text-metal-400 dark:text-metal-600">Date line</p>
+                <p className="text-body-5 font-medium text-metal-600 dark:text-metal-300">{item.dateLine}</p>
+              </div>
+              <div className="w-full lg:max-w-[194px]">
+                <LineProgress progress={item.progress}>
+                  <LineProgressBar className="bg-gradient-1" lineBackground="bg-white border border-[#CFA1FB] h-3" />
+                  <LineProgressText className="text-body-5 font-medium text-metal-600 dark:text-metal-300">
+                    {item.progress}%
+                  </LineProgressText>
+                </LineProgress>
+              </div>
+              <div>
+                <AvatarGroup className="-space-x-2">
+                  {members.map((member) => (
+                    <Avatar key={member.id} className="size-6">
+                      <AvatarImage className="size-6" src={member.img} />
+                    </Avatar>
+                  ))}
+                  <div className="bg-gradient-10 relative z-10 flex size-6 items-center justify-center rounded-full text-body-5 font-medium text-white">
+                    9
+                  </div>
+                </AvatarGroup>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </ProtectedRoute>
   )
 }
 

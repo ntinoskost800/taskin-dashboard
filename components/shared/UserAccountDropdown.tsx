@@ -18,9 +18,11 @@ import { useState } from 'react'
 import { IconX, IGear, IPlusCircle, ISignOut } from '../Icons/Icons'
 import AccountSettings from '../account/AccountSettings'
 import SettingsContent from '../account/SettingsContent'
+import { useAuth } from '@/app/context/AuthContext'
 
 const UserAccountDropdown = () => {
   const [open, setOpen] = useState(false)
+  const { logout } = useAuth()
   return (
     <Dropdown modal={true}>
       <DropdownAction asChild>
@@ -75,12 +77,12 @@ const UserAccountDropdown = () => {
           <AccountSettings />
         </div>
 
-        <Link
-          href="/login"
+        <button
+          onClick={logout}
           className="mb-0 flex w-full cursor-pointer select-none items-center gap-2 rounded-lg bg-transparent p-2.5 text-body-4 font-medium text-error-500 outline-none transition-all duration-300 hover:bg-error-25 focus:bg-error-25 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:text-error-500 dark:hover:bg-error-800/10 dark:focus:bg-error-800/10">
           <ISignOut size={20} />
           <span>Logout</span>
-        </Link>
+        </button>
       </DropdownContent>
     </Dropdown>
   )
