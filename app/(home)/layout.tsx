@@ -10,7 +10,7 @@ import { AuthProvider } from '../context/AuthContext'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'TaskIn || Manage your projects',
+  title: 'DerpIt || Manage your projects',
   description: 'Keep Design System',
 }
 

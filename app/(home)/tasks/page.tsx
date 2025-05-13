@@ -40,7 +40,7 @@ const page = () => {
             </div>
             <TaskBoard />
             <TaskList />
-            <TaskCalender />
+            {/* <TaskCalender /> */}
           </Suspense>
         </TaskProvider>
       </ProtectedRoute>

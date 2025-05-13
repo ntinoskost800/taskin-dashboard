@@ -62,7 +62,7 @@ const MobileSidebar = () => {
                 height={28}
                 style={{ maxWidth: '100%', height: 'auto' }}
               />
-              <p className="text-body-3 font-medium text-metal-900 dark:text-white">TaskIn</p>
+              <p className="text-body-3 font-medium text-metal-900 dark:text-white">DerpIt</p>
             </Link>
             <button onClick={() => setOpen(false)} className="rounded-full bg-metal-50 p-2 dark:bg-metal-800">
               <IconX className="size-4 text-metal-600 dark:text-metal-300" />

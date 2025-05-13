@@ -6,7 +6,7 @@ import { ReactNode, useState } from 'react'
 const LogoProvider = ({ children }: { children: ReactNode }) => {
   const [project, setProject] = useState({
     logo: '/images/logo/star-blow.svg',
-    projectName: 'TaskIn',
+    projectName: 'DerpIt',
   })
 
   return <LogoContext.Provider value={{ project, setProject }}>{children}</LogoContext.Provider>

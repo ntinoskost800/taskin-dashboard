@@ -304,10 +304,10 @@ export const taskTabs: TaskTabs[] = [
     Icon: ListDashes,
     href: 'lists',
   },
-  {
-    id: 3,
-    title: 'Calender',
-    Icon: CalendarBlank,
-    href: 'calender',
-  },
+  // {
+  //   id: 3,
+  //   title: 'Calender',
+  //   Icon: CalendarBlank,
+  //   href: 'calender',
+  // },
 ]
