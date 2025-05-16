@@ -9,16 +9,17 @@ import TaskItem from '../dashboard/task/TaskItem'
 import { useState } from 'react'
 import { CreateSprintModal } from '../dashboard/task/Modals/CreateSprintModal'
 import React from 'react'
+import StartSprintButton from '../dashboard/task/components/StartSprintButton'
+import CompleteSprintButton from '../dashboard/task/components/CompleteSprintButton'
 
 const taskList: ITask[] = [
   {
     id: uuidv4(),
     icon: '/images/emoji/briefcase.svg',
     title: 'Create Wireframes - User Profile Page',
-    visibility: 6,
     project: 'Figma Design System',
-    deadline: '25 July',
-    priority: 'Medium',
+    status: 'To Do',
+    priority: 'High',
     team: [
       { id: 1, img: '/images/avatar/avatar-1.png', name: 'ABC' },
       { id: 2, img: '/images/avatar/avatar-2.png', name: 'DFA 2' },
@@ -31,9 +32,8 @@ const taskList: ITask[] = [
     id: uuidv4(),
     icon: '/images/emoji/artist-palette.svg',
     title: 'Update Color Palette - Brand Refresh',
-    visibility: 6,
     project: 'Figma Design System',
-    deadline: '25 July',
+    status: 'IN PROGRESS',
     priority: 'Medium',
     team: [
       { id: 1, img: '/images/avatar/avatar-1.png', name: 'ABC' },
@@ -47,9 +47,9 @@ const taskList: ITask[] = [
     id: uuidv4(),
     icon: '/images/emoji/waning-crescent-moon.svg',
     title: 'Implement Dark Mode - Mobile Application',
-    visibility: 6,
-    project: 'Figma Design System',
-    deadline: '25 July',
+    project: 'Figma Design',
+    status: 'DONE',
+
     priority: 'Medium',
     team: [
       { id: 1, img: '/images/avatar/avatar-1.png', name: 'ABC' },
@@ -62,21 +62,32 @@ const taskList: ITask[] = [
 ]
 const TaskListView = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isStartButtonClicked, setIsStartButtonClicked] = useState(true)
+  const [isCompleteButtonClicked, setIsCompleteButtonClicked] = useState(false)
 
   const handleOpenModal = (e: React.MouseEvent) => {
     e.stopPropagation()
     setIsModalOpen(true)
   }
 
+  const handleClickStartButton = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setIsStartButtonClicked(false)
+    setIsCompleteButtonClicked(true)
+  }
+  const handleClickCompleteButton = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setIsCompleteButtonClicked(false)
+    setIsStartButtonClicked(true)
+  }
   return (
     <>
-      <div className="hidden w-full items-center justify-between overflow-auto px-6 py-2.5 text-body-5 font-medium text-metal-600 md:flex dark:text-metal-300">
-        <p className="w-full laptop:w-[420px]">Tasks</p>
-        <p className="w-full laptop:w-[100px]">Task visibility</p>
-        <p className="w-full laptop:w-[115px]">Project</p>
-        <p className="w-full laptop:w-[115px]">Deadline</p>
-        <p className="w-full laptop:w-[115px]">Priority</p>
-        <p className="w-full laptop:w-[115px]">Team</p>
+      <div className="grid hidden grid-cols-[minmax(0,3.5fr)_minmax(0,1.5fr)_minmax(0,1fr)_minmax(0,1.5fr)_minmax(0,1fr)] items-start px-6 py-2.5 text-left text-body-5 font-medium text-metal-600 md:grid dark:text-metal-300">
+        <p>Task</p>
+        <p>Project</p>
+        <p>Priority</p>
+        <p>Status</p>
+        <p>Team</p>
       </div>
       <div id="scroll-bar" className="mx-4 h-screen space-y-5 overflow-auto py-5 md:py-0 xl:h-[calc(100vh-220px)]">
         <Accordion
@@ -91,20 +102,21 @@ const TaskListView = () => {
               <div className="flex w-full flex-row items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <Image src="/images/emoji/exploding-head.svg" alt="exploding-head" width={24} height={24} />
-                  <p className="whitespace-nowrap">To Do</p>
+                  <p className="whitespace-nowrap">Sprint 1</p>
                   <Badge color="secondary" variant="base">
                     3
                   </Badge>
                 </div>
 
                 <div className="flex items-center justify-end gap-3">
+                  {isStartButtonClicked ? <StartSprintButton onClick={handleClickStartButton} /> : null}
+                  {isCompleteButtonClicked ? <CompleteSprintButton onClick={handleClickCompleteButton} /> : null}
                   <button
                     onClick={handleOpenModal}
-                    className="flex items-center gap-2 rounded-full bg-gray-100 px-5 py-0.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-200">
-                    <span className="mb-1 text-xl">＋</span>
-                    Create Sprint
+                    className="flex items-center justify-center rounded-full p-2 text-metal-600 hover:bg-gray-100 dark:hover:bg-metal-800"
+                    aria-label="Open sprint menu">
+                    <span className="text-xl leading-none">⋯</span>
                   </button>
-
                   <AccordionIcon>
                     <ICaretUp className="size-4 transition-transform duration-200" />
                   </AccordionIcon>
@@ -112,128 +124,14 @@ const TaskListView = () => {
               </div>
             </AccordionAction>
 
-            <AccordionContent className="divide-y divide-metal-100 lg:divide-y-0 dark:divide-metal-800">
-              {[...taskList].map((task: ITask) => (
-                <TaskItem key={task.id} task={task} />
+            <AccordionContent>
+              {[...taskList].map((task: ITask, index) => (
+                <TaskItem key={task.id} task={task} isLast={index === taskList.length - 1} />
               ))}
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-        <Accordion
-          type="single"
-          collapsible
-          className="rounded-xl bg-white dark:border dark:border-metal-800 dark:bg-metal-900">
-          <AccordionItem
-            value="item-1"
-            className="border-metal-50 hover:bg-white data-[state=open]:bg-white dark:border-metal-800/50">
-            <AccordionAction className="[&[data-state=open]>div>span]:rotate-180">
-              <div className="flex w-full items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <Image
-                    src="/images/emoji/woman-lifting-weights.svg"
-                    alt="woman-lifting-weights"
-                    width={24}
-                    height={24}
-                  />
-                  <p>Doing</p>
-                  <Badge color="secondary" variant="base">
-                    4
-                  </Badge>
-                </div>
-                <div className="flex w-full items-center justify-end gap-3">
-                  <button
-                    onClick={handleOpenModal}
-                    className="flex items-center gap-2 rounded-full bg-gray-100 px-5 py-0.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-200">
-                    <span className="mb-1 text-xl">＋</span>
-                    Create Sprint
-                  </button>
-                  <AccordionIcon>
-                    <ICaretUp className="size-4" />
-                  </AccordionIcon>
-                </div>{' '}
-              </div>
-            </AccordionAction>
-            <AccordionContent className="divide-y divide-metal-100 lg:divide-y-0 dark:divide-metal-800">
-              {[...taskList].map((task: ITask) => (
-                <TaskItem key={task.id} task={task} />
-              ))}
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-        <Accordion
-          type="single"
-          collapsible
-          defaultValue="item-1"
-          className="rounded-xl bg-white dark:border dark:border-metal-800 dark:bg-metal-900">
-          <AccordionItem
-            value="item-1"
-            className="border-metal-50 hover:bg-white data-[state=open]:bg-white dark:border-metal-800/50">
-            <AccordionAction className="[&[data-state=open]>div>span]:rotate-180">
-              <div className="flex w-full items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <Image src="/images/emoji/eyes.svg" alt="eyes" width={24} height={24} />
-                  <p>In review</p>
-                  <Badge color="secondary" variant="base">
-                    2
-                  </Badge>
-                </div>
-                <div className="flex items-center justify-end gap-3">
-                  <button
-                    onClick={handleOpenModal}
-                    className="flex items-center gap-2 rounded-full bg-gray-100 px-5 py-0.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-200">
-                    <span className="mb-1 text-xl">＋</span>
-                    Create Sprint
-                  </button>
 
-                  <AccordionIcon>
-                    <ICaretUp className="size-4 transition-transform duration-200" />
-                  </AccordionIcon>
-                </div>
-              </div>
-            </AccordionAction>
-            <AccordionContent className="divide-y divide-metal-100 lg:divide-y-0 dark:divide-metal-800">
-              {[...taskList].map((task: ITask) => (
-                <TaskItem key={task.id} task={task} />
-              ))}
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-        <Accordion
-          type="single"
-          collapsible
-          className="rounded-xl bg-white dark:border dark:border-metal-800 dark:bg-metal-900">
-          <AccordionItem
-            value="item-1"
-            className="border-metal-50 hover:bg-white data-[state=open]:bg-white dark:border-metal-800/50">
-            <AccordionAction className="[&[data-state=open]>div>span]:rotate-180">
-              <div className="flex w-full items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <Image src="/images/emoji/completed.svg" alt="eyes" width={24} height={24} /> Done
-                  <Badge color="secondary" variant="base">
-                    2
-                  </Badge>
-                </div>
-                <div className="flex items-center justify-end gap-3">
-                  <button
-                    onClick={handleOpenModal}
-                    className="flex items-center gap-2 rounded-full bg-gray-100 px-5 py-0.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-200">
-                    <span className="mb-1 text-xl">＋</span>
-                    Create Sprint
-                  </button>
-
-                  <AccordionIcon>
-                    <ICaretUp className="size-4 transition-transform duration-200" />
-                  </AccordionIcon>
-                </div>
-              </div>
-            </AccordionAction>
-            <AccordionContent className="divide-y divide-metal-100 lg:divide-y-0 dark:divide-metal-800">
-              {[...taskList].map((task: ITask) => (
-                <TaskItem key={task.id} task={task} />
-              ))}
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
         <CreateSprintModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </div>
     </>

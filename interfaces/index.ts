@@ -29,14 +29,14 @@ export interface TaskTabs {
   href: string
 }
 
+export type ITaskStatus = 'To Do' | 'IN PROGRESS' | 'DONE'
 export interface ITask {
   id: string
   icon: string
   title: string
-  visibility: number
   project: string
-  deadline: string
   priority: string
+  status: ITaskStatus
   team: {
     id: number
     img: string
