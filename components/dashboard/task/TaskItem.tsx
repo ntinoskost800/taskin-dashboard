@@ -5,25 +5,10 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import clsx from 'clsx'
-
-const statusOptions = ['TO DO', 'IN PROGRESS', 'DONE']
+import TaskStatusSelect from './components/TaskStatusSelect'
 
 const TaskItem = ({ task, isLast }: { task: ITask; isLast?: boolean }) => {
   const [status, setStatus] = useState(task.status)
-  const [open, setOpen] = useState(false)
-
-  const getStatusStyle = (status: string) => {
-    switch (status) {
-      case 'TO DO':
-        return 'bg-gray-100 text-gray-700 border border-gray-300'
-      case 'IN PROGRESS':
-        return 'bg-blue-100 text-blue-700 border border-blue-300'
-      case 'DONE':
-        return 'bg-green-100 text-green-700 border border-green-300'
-      default:
-        return 'bg-metal-100 text-metal-600 border border-metal-300'
-    }
-  }
 
   return (
     <div
@@ -54,33 +39,7 @@ const TaskItem = ({ task, isLast }: { task: ITask; isLast?: boolean }) => {
         </Badge>
       </div>
       {/* Status dropdown*/}
-      <div className="relative laptop:min-w-[70px] laptop:max-w-[120px]">
-        <button
-          onClick={() => setOpen(!open)}
-          className={clsx(
-            'flex items-center justify-between rounded-full border px-2 py-0.5 text-body-5 font-medium laptop:min-w-[70px] laptop:max-w-[120px]',
-            getStatusStyle(status),
-          )}>
-          {status}
-          <ChevronDown className="ml-1 h-4 w-4" />
-        </button>
-        {open && (
-          <ul className="absolute z-20 mt-1 w-full rounded-md border bg-white shadow-lg dark:bg-metal-800">
-            {statusOptions.map((option) => (
-              <li
-                key={option}
-                onClick={() => {
-                  setStatus(option as ITaskStatus)
-                  setOpen(false)
-                }}
-                className={clsx('cursor-pointer px-3 py-1 text-sm', getStatusStyle(option))}>
-                {' '}
-                {option}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <TaskStatusSelect status={status} onChange={(newStatus) => setStatus(newStatus)} />
       <div className="relative z-10 laptop:w-[120px]">
         <AvatarGroup className="*:ring-white dark:*:ring-metal-800">
           {task.team.map((member: { id: number; img: string; name: string }) => (

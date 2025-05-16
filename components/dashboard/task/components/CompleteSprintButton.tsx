@@ -1,4 +1,5 @@
 'use client'
+import { usePathname } from 'next/navigation'
 import { FC } from 'react'
 import React from 'react'
 interface CompleteSprintButtonProps {
@@ -6,7 +7,9 @@ interface CompleteSprintButtonProps {
 }
 
 const CompleteSprintButton: FC<CompleteSprintButtonProps> = ({ onClick }) => {
-  return (
+  const pathname = usePathname()
+  const isTaskPage = pathname?.includes('/tasks')
+  return isTaskPage ? null : (
     <button
       onClick={onClick}
       className="flex items-center gap-2 rounded-full bg-gray-100 px-5 py-0.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-200">

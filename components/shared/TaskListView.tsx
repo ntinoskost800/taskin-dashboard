@@ -11,6 +11,7 @@ import { CreateSprintModal } from '../dashboard/task/Modals/CreateSprintModal'
 import React from 'react'
 import StartSprintButton from '../dashboard/task/components/StartSprintButton'
 import CompleteSprintButton from '../dashboard/task/components/CompleteSprintButton'
+import { useRouter } from 'next/router'
 
 const taskList: ITask[] = [
   {
@@ -18,7 +19,7 @@ const taskList: ITask[] = [
     icon: '/images/emoji/briefcase.svg',
     title: 'Create Wireframes - User Profile Page',
     project: 'Figma Design System',
-    status: 'To Do',
+    status: 'TO DO',
     priority: 'High',
     team: [
       { id: 1, img: '/images/avatar/avatar-1.png', name: 'ABC' },
@@ -109,8 +110,11 @@ const TaskListView = () => {
                 </div>
 
                 <div className="flex items-center justify-end gap-3">
+                  {/* HIDE BUTTONS IN Tasks page */}
                   {isStartButtonClicked ? <StartSprintButton onClick={handleClickStartButton} /> : null}
                   {isCompleteButtonClicked ? <CompleteSprintButton onClick={handleClickCompleteButton} /> : null}
+                  {/* HIDE BUTTONS IN Tasks page */}
+
                   <button
                     onClick={handleOpenModal}
                     className="flex items-center justify-center rounded-full p-2 text-metal-600 hover:bg-gray-100 dark:hover:bg-metal-800"

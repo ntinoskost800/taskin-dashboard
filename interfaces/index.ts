@@ -29,7 +29,7 @@ export interface TaskTabs {
   href: string
 }
 
-export type ITaskStatus = 'To Do' | 'IN PROGRESS' | 'DONE'
+export type ITaskStatus = 'TO DO' | 'IN PROGRESS' | 'DONE'
 export interface ITask {
   id: string
   icon: string
