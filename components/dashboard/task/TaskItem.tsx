@@ -1,9 +1,9 @@
 import { IFlag } from '@/components/Icons/Icons'
-import { ITask, ITaskStatus } from '@/interfaces'
+import { ITask } from '@/interfaces'
 import { Avatar, AvatarFallback, AvatarGroup, AvatarImage, Badge, Checkbox, Label } from 'keep-react'
 import Image from 'next/image'
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+
 import clsx from 'clsx'
 import TaskStatusSelect from './components/TaskStatusSelect'
 

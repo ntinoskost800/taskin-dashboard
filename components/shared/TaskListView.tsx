@@ -7,11 +7,12 @@ import { Accordion, AccordionAction, AccordionContent, AccordionIcon, AccordionI
 import Image from 'next/image'
 import TaskItem from '../dashboard/task/TaskItem'
 import { useState } from 'react'
-import { CreateSprintModal } from '../dashboard/task/Modals/CreateSprintModal'
+import { EditSprintModal } from '../dashboard/task/Modals/EditSprintModal'
 import React from 'react'
 import StartSprintButton from '../dashboard/task/components/StartSprintButton'
 import CompleteSprintButton from '../dashboard/task/components/CompleteSprintButton'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
+import BacklogTaskItem from '../dashboard/project/components/BacklogTaskItem'
 
 const taskList: ITask[] = [
   {
@@ -66,6 +67,9 @@ const TaskListView = () => {
   const [isStartButtonClicked, setIsStartButtonClicked] = useState(true)
   const [isCompleteButtonClicked, setIsCompleteButtonClicked] = useState(false)
 
+  const pathname = usePathname()
+  const isTaskPage = pathname.includes('/tasks')
+
   const handleOpenModal = (e: React.MouseEvent) => {
     e.stopPropagation()
     setIsModalOpen(true)
@@ -110,10 +114,9 @@ const TaskListView = () => {
                 </div>
 
                 <div className="flex items-center justify-end gap-3">
-                  {/* HIDE BUTTONS IN Tasks page */}
+                  {/* These buttons are hidden in task page */}
                   {isStartButtonClicked ? <StartSprintButton onClick={handleClickStartButton} /> : null}
                   {isCompleteButtonClicked ? <CompleteSprintButton onClick={handleClickCompleteButton} /> : null}
-                  {/* HIDE BUTTONS IN Tasks page */}
 
                   <button
                     onClick={handleOpenModal}
@@ -135,8 +138,10 @@ const TaskListView = () => {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+        {/* emtpy tasks for backlog for now */}
+        {!isTaskPage && <BacklogTaskItem sprints={[]} />}
 
-        <CreateSprintModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        <EditSprintModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </div>
     </>
   )

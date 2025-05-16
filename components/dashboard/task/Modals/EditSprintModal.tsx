@@ -8,7 +8,7 @@ type Props = {
   onClose: () => void
 }
 
-export const CreateSprintModal = ({ isOpen, onClose }: Props) => {
+export const EditSprintModal = ({ isOpen, onClose }: Props) => {
   return (
     <Transition show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -17,7 +17,7 @@ export const CreateSprintModal = ({ isOpen, onClose }: Props) => {
         <div className="fixed inset-0 flex items-center justify-center p-4">
           <Dialog.Panel className="w-full max-w-md rounded-2xl bg-white p-6 text-left align-middle shadow-xl">
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-lg font-medium text-gray-900">Sprint creation</h2>
+              <h2 className="text-lg font-medium text-gray-900">Sprint settings</h2>
               <button onClick={onClose} className="text-xl font-bold text-gray-400 hover:text-gray-600">
                 &times;
               </button>
@@ -57,7 +57,7 @@ export const CreateSprintModal = ({ isOpen, onClose }: Props) => {
                 Cancel
               </button>
               <button className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
-                Create
+                Update
               </button>
             </div>
           </Dialog.Panel>

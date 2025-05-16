@@ -1,7 +1,5 @@
+'use client'
 import ProjectBoardList from '@/components/dashboard/project/ProjectBoardList'
-import ProjectCalendar from '@/components/dashboard/project/ProjectCalendar'
-import ProjectFiles from '@/components/dashboard/project/ProjectFiles'
-import ProjectMessage from '@/components/dashboard/project/ProjectMessage'
 import ProjectOverview from '@/components/dashboard/project/ProjectOverview'
 import ProjectSettings from '@/components/dashboard/project/ProjectSettings'
 import ProjectTabs from '@/components/dashboard/project/ProjectTabs'
@@ -12,8 +10,18 @@ import GroupByDropdown from '@/components/shared/GroupByDropdown'
 import PageHeader from '@/components/shared/PageHeader'
 import SortDropdown from '@/components/shared/SortDropdown'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
-const page = ({ params }: { params: { projectId: string[] } }) => {
+const ProjectByIdPage = ({ params }: { params: { projectId: string[] } }) => {
+  const [isClient, setIsClient] = useState(false)
+
+  // UseEffect and if statement to catch the hydration error
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient || !params.projectId || params.projectId.length < 2) return null
+
   const projectId = params.projectId[0]
   const contentRef = params.projectId[1]
   return (
@@ -39,11 +47,8 @@ const page = ({ params }: { params: { projectId: string[] } }) => {
       <ProjectOverview activeTab={contentRef} />
       <ProjectBoardList activeTab={contentRef} />
       <ProjectTaskList activeTab={contentRef} />
-      <ProjectCalendar activeTab={contentRef} />
-      <ProjectMessage activeTab={contentRef} />
-      <ProjectFiles activeTab={contentRef} />
     </div>
   )
 }
 
-export default page
+export default ProjectByIdPage
