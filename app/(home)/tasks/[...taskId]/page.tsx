@@ -1,4 +1,5 @@
-import { ICalendarBlank, IDotsThreeOutlineVertical, IDownloadSimple, IFlag } from '@/components/Icons/Icons'
+'use client'
+import { ICalendarBlank, IDotsThreeOutlineVertical, IDownloadSimple, IFlag, IPen } from '@/components/Icons/Icons'
 import {
   Avatar,
   AvatarFallback,
@@ -20,41 +21,63 @@ import {
   Textarea,
 } from 'keep-react'
 import Image from 'next/image'
+import { useRouter, useParams } from 'next/navigation'
 
 const page = () => {
+  const router = useRouter()
+  const params = useParams()
+  const taskId = params?.taskId || params?.id || 'task-123'
+
+  const handleEditTask = () => {
+    console.log('Navigating to edit page')
+    router.push(`/tasks/${taskId}/edit`)
+  }
+
   return (
     <div
       id="scroll-bar"
       className="h-screen space-y-6 overflow-auto rounded-2xl bg-metal-25 p-6 lg:p-8 xl:h-[calc(100vh-32px)] dark:bg-metal-900">
-      <div className="flex items-center justify-start gap-x-6 lg:items-start">
-        <div className="flex size-10 items-center justify-center rounded-full bg-metal-50 dark:bg-metal-800">
-          <Image src="/images/emoji/briefcase.svg" alt="briefcase" width={24} height={24} />
-        </div>
-        <div className="space-y-1.5">
-          <p className="text-body-2 font-medium text-metal-900 lg:text-heading-6 dark:text-white">
-            Create Wireframes - User Profile Page
-          </p>
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/" className="flex items-center text-metal-400 dark:text-metal-300">
-                  <div className="flex size-5 items-center justify-center rounded-full bg-[#F5F8FF] dark:bg-[#460683]">
-                    <Image src="/images/logo/figma.svg" alt="figma" height={13} width={13} />
+      <div className="flex items-center justify-between">
+        <div className="flex items-center justify-start gap-x-6 lg:items-start">
+          <div className="flex size-10 items-center justify-center rounded-full bg-metal-50 dark:bg-metal-800">
+            <Image src="/images/emoji/briefcase.svg" alt="briefcase" width={24} height={24} />
+          </div>
+          <div className="space-y-1.5">
+            <p className="text-body-2 font-medium text-metal-900 lg:text-heading-6 dark:text-white">
+              Create Wireframes - User Profile Page
+            </p>
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/" className="flex items-center text-metal-400 dark:text-metal-300">
+                    <div className="flex size-5 items-center justify-center rounded-full bg-[#F5F8FF] dark:bg-[#460683]">
+                      <Image src="/images/logo/figma.svg" alt="figma" height={13} width={13} />
+                    </div>
+                    Figma Design System
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbDivider />
+                <BreadcrumbPage className="text-metal-400 dark:text-metal-300">
+                  <div className="flex size-5 items-center justify-center rounded-full bg-metal-50 dark:bg-metal-800">
+                    <Image src="/images/emoji/briefcase.svg" alt="figma" height={13} width={13} />
                   </div>
-                  Figma Design System
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbDivider />
-              <BreadcrumbPage className="text-metal-400 dark:text-metal-300">
-                <div className="flex size-5 items-center justify-center rounded-full bg-metal-50 dark:bg-metal-800">
-                  <Image src="/images/emoji/briefcase.svg" alt="figma" height={13} width={13} />
-                </div>
-                Create Wireframes - User Profile Page
-              </BreadcrumbPage>
-            </BreadcrumbList>
-          </Breadcrumb>
+                  Create Wireframes - User Profile Page
+                </BreadcrumbPage>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </div>
         </div>
+
+        {/* Edit Button */}
+        <button
+          onClick={handleEditTask}
+          className="flex items-center gap-x-2 rounded-lg bg-primary-500 px-4 py-2.5 text-body-3 font-medium text-white hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-100 dark:focus:ring-primary-400/20">
+          <IPen size={16} />
+          Edit Task
+        </button>
       </div>
+
+      {/* Rest of your component remains the same */}
       <div className="flex flex-col items-start gap-y-2.5 border-y border-metal-100 py-4 lg:flex-row lg:items-center lg:gap-x-10 lg:gap-y-0 dark:border-metal-800">
         <div className="flex items-center gap-x-4">
           <p className="text-body-3 font-medium text-metal-900 dark:text-white">Assignee</p>
@@ -99,7 +122,7 @@ const page = () => {
         <p className="text-body-2 font-medium text-metal-900 dark:text-white">Description</p>
         <p className="text-body-4 font-normal text-metal-600 dark:text-metal-300">
           This foundational phase focuses on outlining the key components and functionalities that the profile page will
-          encompass, such as the user’s personal information, profile picture, activity feed, settings, and interactive
+          encompass, such as the user's personal information, profile picture, activity feed, settings, and interactive
           elements like buttons and navigation links. The wireframes serve as a blueprint, providing a clear visual
           guide for the design and development teams to understand the spatial arrangement and user flow. It ensures
           that all essential elements are included and optimally positioned before advancing to the more detailed design
@@ -323,7 +346,7 @@ const page = () => {
                     </li>
                   </ol>
                   <p>
-                    Overall, it’s a solid start, and I’m excited to see how it evolves. Let me know if you need any
+                    Overall, it's a solid start, and I'm excited to see how it evolves. Let me know if you need any
                     further feedback or assistance!
                   </p>
                 </div>
