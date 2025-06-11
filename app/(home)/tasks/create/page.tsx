@@ -16,6 +16,7 @@ import { ChevronDown, ArrowLeft } from 'lucide-react'
 // import Image from 'next/Image'
 import React, { FC, useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Editor from '@/components/Editor'
 
 const CreateTaskPage: FC = () => {
   const router = useRouter()
@@ -246,16 +247,17 @@ const CreateTaskPage: FC = () => {
             {/* Description */}
             <div className="space-y-2">
               <label className="text-body-3 font-medium text-metal-900 dark:text-white">Description</label>
-              <div className="rounded-lg border border-metal-300 bg-white px-4 py-3 dark:border-metal-600 dark:bg-metal-800">
-                <textarea
+
+              <Editor />
+
+              {/* <textarea
                   ref={textareaRef}
                   value={description}
                   onChange={handleDescriptionChange}
                   className="min-h-[120px] w-full resize-none border-none bg-transparent text-metal-900 placeholder-metal-400 outline-none dark:text-white"
                   placeholder="Describe the task in detail..."
                   rows={1}
-                />
-              </div>
+                /> */}
             </div>
           </div>
         </div>
